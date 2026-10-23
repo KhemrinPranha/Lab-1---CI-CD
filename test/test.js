@@ -6,6 +6,11 @@ describe('GET /', () => {
  const response = await request(app).get('/');
  expect(response.status).to.equal(200);
  });
+   it('GET /health returns status ok', async () => {
+    const response = await request(app).get('/health');
+    expect(response.status).to.equal(200);
+    expect(response.body).to.deep.equal({ status: 'ok' });
+  });
  it('returns the expected greeting', async () => {
  const response = await request(app).get('/');
  expect(response.text).to.equal('Hello, GitHub Actions!');
